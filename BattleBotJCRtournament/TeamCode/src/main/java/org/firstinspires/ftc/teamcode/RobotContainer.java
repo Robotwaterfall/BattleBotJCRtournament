@@ -25,8 +25,11 @@ public class RobotContainer extends OpMode {
     bladeCommand = new bladeMotorCommand(bladeSub, gamepad1);
   }
 
-  public void loop(){
+  public void loop() {
     driveCommand.run();
-    bladeCommand.runBlade();
+
+    if (gamepad1.a) {
+      bladeCommand.runBlade();
+    }
   }
 }
