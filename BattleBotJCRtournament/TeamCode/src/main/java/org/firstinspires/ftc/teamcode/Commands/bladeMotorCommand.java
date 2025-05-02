@@ -4,6 +4,10 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Subsystems.bladeMotorSubsystem;
 
+/**
+ * This class is for setting the blade to the desired
+ * motor speed.
+ */
 public class bladeMotorCommand {
     private final bladeMotorSubsystem bladeSub;
     private final Gamepad gamepad;

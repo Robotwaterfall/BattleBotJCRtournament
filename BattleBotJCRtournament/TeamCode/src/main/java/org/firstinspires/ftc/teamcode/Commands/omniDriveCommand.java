@@ -4,6 +4,11 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Subsystems.omniDriveSubsystem;
 
+/**
+ * This class is for setting the joystick to the value we created
+ * in the subsystem class. This class is also used for running the motors
+ * because in the RobotContainer class i execute the line "run()" down below.
+ */
 public class omniDriveCommand {
    private final omniDriveSubsystem drivesub;
    private final Gamepad gamepad;

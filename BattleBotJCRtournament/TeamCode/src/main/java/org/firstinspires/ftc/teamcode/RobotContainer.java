@@ -8,6 +8,9 @@ import org.firstinspires.ftc.teamcode.Commands.omniDriveCommand;
 import org.firstinspires.ftc.teamcode.Subsystems.bladeMotorSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.omniDriveSubsystem;
 
+/**
+ * This class is for initializing the run commands we made in each command class.
+ */
 @TeleOp(name = "TeleOperatedMode")
 public class RobotContainer extends OpMode {
   omniDriveSubsystem driveSub;
@@ -26,8 +29,18 @@ public class RobotContainer extends OpMode {
   }
 
   public void loop() {
+
+    /**
+     This runs the drive motors
+     during the TeleOperated mode
+     */
+
     driveCommand.run();
 
+    /**
+     * This runs the blade motor at 100% (forward) when
+     * button 'a' is pressed
+     */
     if (gamepad1.a) {
       bladeCommand.runBlade();
     }
