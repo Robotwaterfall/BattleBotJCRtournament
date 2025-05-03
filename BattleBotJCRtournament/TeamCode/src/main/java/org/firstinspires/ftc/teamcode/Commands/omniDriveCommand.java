@@ -12,6 +12,9 @@ import org.firstinspires.ftc.teamcode.Subsystems.omniDriveSubsystem;
 public class omniDriveCommand {
    private final omniDriveSubsystem drivesub;
    private final Gamepad gamepad;
+   private boolean slowMode = false;
+   private boolean lastToggleState = false;
+
 
    public omniDriveCommand(omniDriveSubsystem drivesub, Gamepad gamepad){
        this.drivesub = drivesub;
@@ -19,10 +22,22 @@ public class omniDriveCommand {
    }
 
    public void run(){
-       double x = gamepad.left_stick_x;
-       double y = -gamepad.left_stick_y;
-       double rotation = -gamepad.right_stick_x;
+
+       //Toggle logic using 'x' button
+       boolean togglePressed = gamepad.x;
+
+       if(togglePressed && !lastToggleState){
+           slowMode = !slowMode; //toggle the state
+       }
+       lastToggleState = togglePressed; //update the state for next loop
+
+       double multiplier = slowMode ? 0.5 : 1.0;
+
+       double x = gamepad.left_stick_x * multiplier;
+       double y = -gamepad.left_stick_y * multiplier;
+       double rotation = -gamepad.right_stick_x * multiplier;
 
        drivesub.drive(x,y,rotation);
+
    }
 }

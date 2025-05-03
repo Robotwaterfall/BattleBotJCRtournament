@@ -18,7 +18,7 @@ public class omniDriveSubsystem {
     DcMotor motorRight;
     DcMotor motorBack;
 
-    private BNO055IMU imu;
+    private final BNO055IMU imu;
 
     public omniDriveSubsystem(HardwareMap hardwareMap){
         motorLeft = hardwareMap.get(DcMotor.class, "motor1");
