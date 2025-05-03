@@ -31,7 +31,7 @@ public class omniDriveCommand {
        }
        lastToggleState = togglePressed; //update the state for next loop
 
-       double multiplier = slowMode ? 0.5 : 1.0;
+       double multiplier = slowMode ? 0.6 : 1.0; //sets the slow mode speed to 60%
 
        double x = gamepad.left_stick_x * multiplier;
        double y = -gamepad.left_stick_y * multiplier;
