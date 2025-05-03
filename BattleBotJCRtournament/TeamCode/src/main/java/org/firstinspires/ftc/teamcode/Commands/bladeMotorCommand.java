@@ -12,16 +12,29 @@ public class bladeMotorCommand {
     private final bladeMotorSubsystem bladeSub;
     private final Gamepad gamepad;
 
+    private boolean lastToggleState = false;
+    private boolean motorState = false;
+
     public bladeMotorCommand(bladeMotorSubsystem bladeSub, Gamepad gamepad){
         this.bladeSub = bladeSub;
         this.gamepad = gamepad;
     }
 
-    public void runBlade(){
-        bladeSub.setPower(1);
+    public void bladeRun(){
+        boolean togglePressed = gamepad.a;
+
+        if(togglePressed && !lastToggleState){
+            motorState = !motorState;
+        }
+
+        lastToggleState = togglePressed;
+
+        if(motorState){
+            bladeSub.setPower(1);
+        }else{
+            bladeSub.setPower(0);
+        }
     }
 
-    public void stopBlade(){
-        bladeSub.setPower(0);
-    }
+
 }
