@@ -36,6 +36,8 @@ public class RobotContainer extends OpMode {
      */
 
     driveCommand.run();
+    telemetry.addData("Heading (rad)", driveSub.getHeading());
+    telemetry.update();
 
     /**
      * This runs the blade motor at 100% (forward) when
@@ -43,6 +45,9 @@ public class RobotContainer extends OpMode {
      */
     if (gamepad1.a) {
       bladeCommand.runBlade();
+    }
+    if(gamepad1.b){
+      bladeCommand.stopBlade();
     }
   }
 }

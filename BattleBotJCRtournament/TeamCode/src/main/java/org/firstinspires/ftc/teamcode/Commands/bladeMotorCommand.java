@@ -20,4 +20,8 @@ public class bladeMotorCommand {
     public void runBlade(){
         bladeSub.setPower(1);
     }
+
+    public void stopBlade(){
+        bladeSub.setPower(0);
+    }
 }
