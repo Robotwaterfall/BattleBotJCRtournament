@@ -33,9 +33,11 @@ public class omniDriveSubsystem {
 
     private double headingOffset = 0;
 
+
     public void zeroHeading() {
         headingOffset = getRawHeading();  // store the current angle as zero
     }
+
 
     public double getRawHeading() {
         return imu.getAngularOrientation().firstAngle;

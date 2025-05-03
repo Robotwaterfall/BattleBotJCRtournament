@@ -37,6 +37,10 @@ public class omniDriveCommand {
        double y = -gamepad.left_stick_y * multiplier;
        double rotation = -gamepad.right_stick_x * multiplier;
 
+       if(gamepad.dpad_down){
+           drivesub.zeroHeading();
+       }
+
        drivesub.drive(x,y,rotation);
 
    }
