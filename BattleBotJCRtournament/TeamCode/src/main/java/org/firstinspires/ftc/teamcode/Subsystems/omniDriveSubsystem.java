@@ -31,6 +31,13 @@ public class omniDriveSubsystem {
         double powerRight = -0.5 * x - (Math.sqrt(3)/2) * y + rotation;
         double powerBack = x + rotation;
 
+        double max = Math.max(Math.abs(powerLeft), Math.max(Math.abs(powerRight), Math.abs(powerBack)));
+        if (max > 1.0){
+            powerLeft /= max;
+            powerRight /= max;
+            powerBack /= max;
+        }
+
         motorLeft.setPower(powerLeft);
         motorRight.setPower(powerRight);
         motorBack.setPower(powerBack);
