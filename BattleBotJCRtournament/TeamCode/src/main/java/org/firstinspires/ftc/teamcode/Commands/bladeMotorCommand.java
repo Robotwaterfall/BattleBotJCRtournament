@@ -38,11 +38,12 @@ public class bladeMotorCommand {
 
         bladeSub.setPower(motorState ? 1 : 0);
 
-        // Only update telemetry if motor state changed
         if (motorState != lastReportedMotorState) {
+            telemetry.addData("Blade Active", motorState ? "YES" : "NO");
             telemetry.update();
             lastReportedMotorState = motorState;
         }
+
     }
 
 }
