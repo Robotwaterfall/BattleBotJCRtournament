@@ -2,9 +2,12 @@ package org.firstinspires.ftc.teamcode.Commands;
 
 
 import com.qualcomm.robotcore.hardware.Gamepad;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.Subsystems.omniDriveSubsystem;
+
+import java.sql.Time;
 
 /**
  * This class is for setting the joystick to the value we created
@@ -17,6 +20,7 @@ public class omniDriveCommand {
    private boolean slowMode = false;
    private boolean lastToggleState = false;
    private final Telemetry telemetry;
+   ElapsedTime timer = new ElapsedTime();
 
 
    public omniDriveCommand(omniDriveSubsystem drivesub, Gamepad gamepad, Telemetry telemetry){
@@ -25,7 +29,13 @@ public class omniDriveCommand {
        this.telemetry = telemetry;
    }
 
+   public void resetTimer(){
+       timer.reset();
+   }
+
    public void run(){
+
+       double seconds = timer.seconds();
 
        //Toggle logic using 'x' button
        boolean togglePressed = gamepad.x;
@@ -45,6 +55,20 @@ public class omniDriveCommand {
            drivesub.zeroHeading();
        }
 
+       /*
+        * Telemetry for the robot. This list is in order of each line of code
+
+        * shows how long the Op mode has been active
+
+        * shows if slow mode is on or off
+
+        * shows the heading of the robot
+
+        * shows power that is going to each motor
+
+        * shows the joysticks x and y value
+        */
+       telemetry.addData("Initialized Time", "%.2f Seconds", timer.seconds());
        telemetry.addData("Slow Mode", slowMode ? "ON" : "OFF");
        telemetry.addData("Heading (rad)", drivesub.getHeading());
        telemetry.addData("Motor Powers", "L: %.2f | R: %.2f | B: %.2f",
@@ -52,6 +76,10 @@ public class omniDriveCommand {
                drivesub.getRightPower(),
                drivesub.getBackPower()
        );
+       telemetry.addData("Joysticks", "lY: %.2f | lX: %.2f | rX: %.2f",
+               gamepad.left_stick_y,
+               gamepad.left_stick_x,
+               gamepad.right_stick_x);
        telemetry.update();
 
        drivesub.drive(x,y,rotation);

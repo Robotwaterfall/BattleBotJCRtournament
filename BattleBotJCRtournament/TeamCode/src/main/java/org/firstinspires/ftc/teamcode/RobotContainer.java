@@ -28,7 +28,6 @@ public class RobotContainer extends OpMode {
     bladeSub = new bladeMotorSubsystem(hardwareMap);
     bladeCommand = new bladeMotorCommand(bladeSub, gamepad1, telemetry);
   }
-
   public void loop() {
 
     /*
