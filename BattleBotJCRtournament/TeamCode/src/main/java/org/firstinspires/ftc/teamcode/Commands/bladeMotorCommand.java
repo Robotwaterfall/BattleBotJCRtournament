@@ -17,7 +17,7 @@ public class bladeMotorCommand {
 
     private boolean lastToggleState = false;
     private boolean motorState = false;
-
+    private boolean lastReportedMotorState = false;
     private final Telemetry telemetry;
 
     public bladeMotorCommand(bladeMotorSubsystem bladeSub, Gamepad gamepad, Telemetry telemetry){
@@ -26,24 +26,23 @@ public class bladeMotorCommand {
         this.telemetry = telemetry;
     }
 
-    public void bladeRun(){
+
+    public void bladeRun() {
         boolean togglePressed = gamepad.a;
 
-        if(togglePressed && !lastToggleState){
+        if (togglePressed && !lastToggleState) {
             motorState = !motorState;
         }
 
         lastToggleState = togglePressed;
 
-        if(motorState){
-            bladeSub.setPower(1);
-        }else{
-            bladeSub.setPower(0);
+        bladeSub.setPower(motorState ? 1 : 0);
+
+        // Only update telemetry if motor state changed
+        if (motorState != lastReportedMotorState) {
+            telemetry.update();
+            lastReportedMotorState = motorState;
         }
-
-        telemetry.addData("isBladeSpinning", motorState ? "YES" : "NO");
-        telemetry.update();
     }
-
 
 }
