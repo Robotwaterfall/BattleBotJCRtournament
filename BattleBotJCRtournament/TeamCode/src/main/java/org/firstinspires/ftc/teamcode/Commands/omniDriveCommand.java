@@ -1,9 +1,9 @@
 package org.firstinspires.ftc.teamcode.Commands;
 
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.Subsystems.omniDriveSubsystem;
 
 /**
@@ -16,11 +16,13 @@ public class omniDriveCommand {
    private final Gamepad gamepad;
    private boolean slowMode = false;
    private boolean lastToggleState = false;
+   private final Telemetry telemetry;
 
 
-   public omniDriveCommand(omniDriveSubsystem drivesub, Gamepad gamepad){
+   public omniDriveCommand(omniDriveSubsystem drivesub, Gamepad gamepad, Telemetry telemetry){
        this.drivesub = drivesub;
        this.gamepad = gamepad;
+       this.telemetry = telemetry;
    }
 
    public void run(){

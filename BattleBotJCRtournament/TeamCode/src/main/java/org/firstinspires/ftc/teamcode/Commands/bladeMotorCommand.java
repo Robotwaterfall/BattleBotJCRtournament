@@ -4,6 +4,7 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.tel
 
 import com.qualcomm.robotcore.hardware.Gamepad;
 
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.Subsystems.bladeMotorSubsystem;
 
 /**
@@ -17,9 +18,12 @@ public class bladeMotorCommand {
     private boolean lastToggleState = false;
     private boolean motorState = false;
 
-    public bladeMotorCommand(bladeMotorSubsystem bladeSub, Gamepad gamepad){
+    private final Telemetry telemetry;
+
+    public bladeMotorCommand(bladeMotorSubsystem bladeSub, Gamepad gamepad, Telemetry telemetry){
         this.bladeSub = bladeSub;
         this.gamepad = gamepad;
+        this.telemetry = telemetry;
     }
 
     public void bladeRun(){
@@ -38,6 +42,7 @@ public class bladeMotorCommand {
         }
 
         telemetry.addData("isBladeSpinning", motorState ? "YES" : "NO");
+        telemetry.update();
     }
 
 

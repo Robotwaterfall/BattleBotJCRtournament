@@ -23,10 +23,10 @@ public class RobotContainer extends OpMode {
 
   public void init(){
     driveSub = new omniDriveSubsystem(hardwareMap);
-    driveCommand = new omniDriveCommand(driveSub, gamepad1);
+    driveCommand = new omniDriveCommand(driveSub, gamepad1, telemetry);
 
     bladeSub = new bladeMotorSubsystem(hardwareMap);
-    bladeCommand = new bladeMotorCommand(bladeSub, gamepad1);
+    bladeCommand = new bladeMotorCommand(bladeSub, gamepad1, telemetry);
   }
 
   public void loop() {
