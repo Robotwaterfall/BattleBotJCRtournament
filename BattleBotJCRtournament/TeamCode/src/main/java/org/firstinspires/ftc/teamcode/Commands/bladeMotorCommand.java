@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.Commands;
 
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
+
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Subsystems.bladeMotorSubsystem;
@@ -34,6 +36,8 @@ public class bladeMotorCommand {
         }else{
             bladeSub.setPower(0);
         }
+
+        telemetry.addData("isBladeSpinning", motorState ? "YES" : "NO");
     }
 
 

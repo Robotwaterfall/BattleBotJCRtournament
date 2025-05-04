@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.Commands;
 
+import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
+
 import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.Subsystems.omniDriveSubsystem;
@@ -40,6 +42,15 @@ public class omniDriveCommand {
        if(gamepad.dpad_down){
            drivesub.zeroHeading();
        }
+
+       telemetry.addData("Slow Mode", slowMode ? "ON" : "OFF");
+       telemetry.addData("Heading (rad)", drivesub.getHeading());
+       telemetry.addData("Motor Powers", "L: %.2f | R: %.2f | B: %.2f",
+               drivesub.getLeftPower(),
+               drivesub.getRightPower(),
+               drivesub.getBackPower()
+       );
+       telemetry.update();
 
        drivesub.drive(x,y,rotation);
 

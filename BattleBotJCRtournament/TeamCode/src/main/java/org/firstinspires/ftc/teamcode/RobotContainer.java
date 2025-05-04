@@ -35,14 +35,12 @@ public class RobotContainer extends OpMode {
      This runs the drive motors
      during the TeleOperated mode
      */
-
     driveCommand.run();
-    telemetry.addData("Heading (rad)", driveSub.getHeading());
-    telemetry.update();
     /*
      * This runs the blade motor at 100% (forward) when
      * button 'a' is pressed(Toggled)
      */
     bladeCommand.bladeRun();
+
   }
 }
