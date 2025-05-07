@@ -4,8 +4,10 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Commands.bladeMotorCommand;
+import org.firstinspires.ftc.teamcode.Commands.hammerCommand;
 import org.firstinspires.ftc.teamcode.Commands.omniDriveCommand;
 import org.firstinspires.ftc.teamcode.Subsystems.bladeMotorSubsystem;
+import org.firstinspires.ftc.teamcode.Subsystems.hammerSubsystem;
 import org.firstinspires.ftc.teamcode.Subsystems.omniDriveSubsystem;
 
 /**
@@ -19,6 +21,9 @@ public class RobotContainer extends OpMode {
   bladeMotorSubsystem bladeSub;
   bladeMotorCommand bladeCommand;
 
+  hammerSubsystem hammerSub;
+  hammerCommand hammerCmd;
+
 
 
   public void init(){
@@ -27,6 +32,9 @@ public class RobotContainer extends OpMode {
 
     bladeSub = new bladeMotorSubsystem(hardwareMap);
     bladeCommand = new bladeMotorCommand(bladeSub, gamepad1, telemetry);
+
+    hammerSub = new hammerSubsystem(hardwareMap);
+    hammerCmd = new hammerCommand(hammerSub, gamepad1);
   }
 
   public void loop() {
@@ -41,6 +49,8 @@ public class RobotContainer extends OpMode {
      * button 'a' is pressed(Toggled)
      */
     bladeCommand.bladeRun();
+
+    hammerCmd.runSmash();
 
   }
 }
