@@ -15,7 +15,10 @@ public class hammerCommand {
 
     public void runSmash() {
         if (gamepad.y) {
-            hamSub.setSmash(90);
+            hamSub.setSmash(180);
+        }
+        if(gamepad.b){
+            hamSub.setSmash(0);
         }
     }
 }
