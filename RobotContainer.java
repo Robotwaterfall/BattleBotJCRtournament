@@ -18,18 +18,15 @@ public class RobotContainer extends OpMode {
 
   bladeMotorSubsystem bladeSub;
   bladeMotorCommand bladeCommand;
-  TelemetryManager telemetryM;
 
 
 
   public void init(){
     driveSub = new omniDriveSubsystem(hardwareMap);
-    driveCommand = new omniDriveCommand(driveSub, gamepad1);
+    driveCommand = new omniDriveCommand(driveSub, gamepad1, telemetry);
 
     bladeSub = new bladeMotorSubsystem(hardwareMap);
     bladeCommand = new bladeMotorCommand(bladeSub, gamepad1);
-
-    telemetryM = new TelemetryManager(bladeCommand, bladeSub, driveCommand, driveSub, telemetry, gamepad1);
   }
   public void loop() {
 
@@ -43,8 +40,6 @@ public class RobotContainer extends OpMode {
      * button 'a' is pressed(Toggled)
      */
     bladeCommand.bladeRun();
-
-    telemetryM.runTelemetry();
 
   }
 }

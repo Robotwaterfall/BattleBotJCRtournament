@@ -19,12 +19,14 @@ public class omniDriveCommand {
    private final Gamepad gamepad;
    public boolean slowMode = false;
    private boolean lastToggleState = false;
+   private final Telemetry telemetry;
    ElapsedTime timer = new ElapsedTime();
 
 
-   public omniDriveCommand(omniDriveSubsystem drivesub, Gamepad gamepad){
+   public omniDriveCommand(omniDriveSubsystem drivesub, Gamepad gamepad, Telemetry telemetry){
        this.drivesub = drivesub;
        this.gamepad = gamepad;
+       this.telemetry = telemetry;
    }
 
    public void resetTimer(){
