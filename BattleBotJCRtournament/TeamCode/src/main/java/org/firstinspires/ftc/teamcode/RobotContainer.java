@@ -31,7 +31,7 @@ public class RobotContainer extends OpMode {
   public void loop() {
 
     /*
-     This runs the drive motors
+     This runs the drive motors according to the joystick values
      during the TeleOperated mode
      */
     driveCommand.run();
