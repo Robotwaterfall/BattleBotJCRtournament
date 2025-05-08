@@ -14,16 +14,13 @@ import org.firstinspires.ftc.teamcode.Subsystems.bladeMotorSubsystem;
 public class bladeMotorCommand {
     private final bladeMotorSubsystem bladeSub;
     private final Gamepad gamepad;
-
     private boolean lastToggleState = false;
-    private boolean motorState = false;
+    public boolean motorState = false;
     private boolean lastReportedMotorState = false;
-    private final Telemetry telemetry;
 
-    public bladeMotorCommand(bladeMotorSubsystem bladeSub, Gamepad gamepad, Telemetry telemetry){
+    public bladeMotorCommand(bladeMotorSubsystem bladeSub, Gamepad gamepad){
         this.bladeSub = bladeSub;
         this.gamepad = gamepad;
-        this.telemetry = telemetry;
     }
 
 
@@ -39,8 +36,6 @@ public class bladeMotorCommand {
         bladeSub.setPower(motorState ? 1 : 0);
 
         if (motorState != lastReportedMotorState) {
-            telemetry.addData("Blade Active", motorState ? "YES" : "NO");
-            telemetry.update();
             lastReportedMotorState = motorState;
         }
 

@@ -26,7 +26,7 @@ public class RobotContainer extends OpMode {
     driveCommand = new omniDriveCommand(driveSub, gamepad1, telemetry);
 
     bladeSub = new bladeMotorSubsystem(hardwareMap);
-    bladeCommand = new bladeMotorCommand(bladeSub, gamepad1, telemetry);
+    bladeCommand = new bladeMotorCommand(bladeSub, gamepad1);
   }
   public void loop() {
 

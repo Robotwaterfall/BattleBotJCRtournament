@@ -17,7 +17,7 @@ import java.sql.Time;
 public class omniDriveCommand {
    private final omniDriveSubsystem drivesub;
    private final Gamepad gamepad;
-   private boolean slowMode = false;
+   public boolean slowMode = false;
    private boolean lastToggleState = false;
    private final Telemetry telemetry;
    ElapsedTime timer = new ElapsedTime();
@@ -54,33 +54,6 @@ public class omniDriveCommand {
        if(gamepad.dpad_down){
            drivesub.zeroHeading();
        }
-
-       /*
-        * Telemetry for the robot. This list is in order of each line of code
-
-        * shows how long the Op mode has been active
-
-        * shows if slow mode is on or off
-
-        * shows the heading of the robot
-
-        * shows power that is going to each motor
-
-        * shows the joysticks x and y value
-        */
-       telemetry.addData("Initialized Time", "%.2f Seconds", timer.seconds());
-       telemetry.addData("Slow Mode", slowMode ? "ON" : "OFF");
-       telemetry.addData("Heading (rad)", drivesub.getHeading());
-       telemetry.addData("Motor Powers", "L: %.2f | R: %.2f | B: %.2f",
-               drivesub.getLeftPower(),
-               drivesub.getRightPower(),
-               drivesub.getBackPower()
-       );
-       telemetry.addData("Joysticks", "lY: %.2f | lX: %.2f | rX: %.2f",
-               gamepad.left_stick_y,
-               gamepad.left_stick_x,
-               gamepad.right_stick_x);
-       telemetry.update();
 
        drivesub.drive(x,y,rotation);
 
