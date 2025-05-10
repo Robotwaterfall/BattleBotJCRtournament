@@ -19,6 +19,10 @@ public class bladeMotorSubsystem {
         blade.setDirection(DcMotorSimple.Direction.FORWARD);
     }
 
+    public double getBladePower(){
+        return blade.getPower();
+    }
+
     //sets the blade power that is declared in the commands class
     public void setPower(double power){
         blade.setPower(power);

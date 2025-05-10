@@ -39,6 +39,8 @@ public class TelemetryManager {
                 driveSub.getRightPower(),
                 driveSub.getBackPower()
         );
+        telemetry.addData("Blade Power", "BP: %.2f",
+                bladeSub.getBladePower());
         telemetry.addData("Joysticks", "lY: %.2f | lX: %.2f | rX: %.2f",
                 gamepad.left_stick_y,
                 gamepad.left_stick_x,
