@@ -26,6 +26,7 @@ public class bladeMotorCommand {
 
     public void bladeRun() {
         boolean togglePressed = gamepad.a;
+        boolean testMode = gamepad.left_trigger > 0.5 && gamepad.right_trigger > 0.5 && gamepad.b;
 
         if (togglePressed && !lastToggleState) {
             motorState = !motorState;
@@ -33,7 +34,11 @@ public class bladeMotorCommand {
 
         lastToggleState = togglePressed;
 
-        bladeSub.setPower(motorState ? 1 : 0);
+        if (testMode) {
+            bladeSub.setPower(0.4); // Low-power test mode
+        } else {
+            bladeSub.setPower(motorState ? 1 : 0);
+        }
 
         if (motorState != lastReportedMotorState) {
             lastReportedMotorState = motorState;
