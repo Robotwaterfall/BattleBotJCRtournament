@@ -27,6 +27,7 @@ public class omniDriveCommand {
        this.gamepad = gamepad;
    }
 
+   //resets the timer when the robot gets enabled
    public void resetTimer(){
        timer.reset();
    }
@@ -49,6 +50,7 @@ public class omniDriveCommand {
        double y = -gamepad.left_stick_y * multiplier;
        double rotation = -gamepad.right_stick_x * multiplier;
 
+       //when the dpad button down is pressed the robot resets it heading
        if(gamepad.dpad_down){
            drivesub.zeroHeading();
        }

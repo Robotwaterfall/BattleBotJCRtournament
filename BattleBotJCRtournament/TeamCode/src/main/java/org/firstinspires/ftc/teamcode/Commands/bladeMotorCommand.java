@@ -34,6 +34,9 @@ public class bladeMotorCommand {
 
         lastToggleState = togglePressed;
 
+        //if the left trigger, right trigger, and the game pad button b is
+        //pressed the blade motor will spin at 40% speed for PIT testing
+
         if (testMode) {
             bladeSub.setPower(0.4); // Low-power test mode
         } else {

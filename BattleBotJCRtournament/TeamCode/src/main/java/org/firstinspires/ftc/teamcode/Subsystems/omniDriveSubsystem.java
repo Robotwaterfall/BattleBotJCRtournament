@@ -47,6 +47,9 @@ public class omniDriveSubsystem {
         return AngleUnit.normalizeRadians(getRawHeading() - headingOffset);
     }
 
+    /**
+     * gets the powers of the motors
+     */
     public double getLeftPower(){
         return motorLeft.getPower();
     }

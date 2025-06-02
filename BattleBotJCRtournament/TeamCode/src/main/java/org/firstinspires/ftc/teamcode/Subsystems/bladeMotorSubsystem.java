@@ -15,10 +15,11 @@ public class bladeMotorSubsystem {
         // sets the motor we just created to its device port that i configured on the robot
         blade = hardwareMap.get(DcMotor.class, "motor4");
 
-        blade.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        blade.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         blade.setDirection(DcMotorSimple.Direction.FORWARD);
     }
 
+    //gets the blade motors power for telemetry
     public double getBladePower(){
         return blade.getPower();
     }
